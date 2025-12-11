@@ -1,0 +1,375 @@
+import React from "react";
+import { Link, useLocation } from "react-router-dom";
+import { useTheme } from "../../../context/ThemeContext";
+
+const LeftSidebar = () => {
+  const location = useLocation();
+  const { isDark, toggleTheme } = useTheme();
+
+  const menuItems = [
+    {
+      path: "/",
+      label: "Dashboard",
+      icon: (
+        <svg
+          className="w-5 h-5"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={2}
+            d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
+          />
+        </svg>
+      ),
+    },
+    {
+      path: "/settings",
+      label: "Settings",
+      icon: (
+        <svg
+          className="w-5 h-5"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={2}
+            d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"
+          />
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={2}
+            d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+          />
+        </svg>
+      ),
+    },
+    {
+      path: "/profile",
+      label: "Profile",
+      icon: (
+        <svg
+          className="w-5 h-5"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={2}
+            d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
+          />
+        </svg>
+      ),
+    },
+    {
+      path: "/users",
+      label: "Users",
+      icon: (
+        <svg
+          className="w-5 h-5"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={2}
+            d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197m13.5-7.25a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0z"
+          />
+        </svg>
+      ),
+    },
+    {
+      path: "/analytics",
+      label: "Analytics",
+      icon: (
+        <svg
+          className="w-5 h-5"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={2}
+            d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
+          />
+        </svg>
+      ),
+    },
+  ];
+
+  return (
+    <div
+      className={`fixed left-0 top-0 h-screen w-64 flex flex-col border-r shadow-sm transition-colors duration-200 ${
+        isDark
+          ? "bg-gray-900 border-gray-800 text-white"
+          : "bg-white border-gray-200 text-gray-900"
+      }`}
+    >
+      {/* Заголовок сайдбара */}
+      <div
+        className={`p-6 border-b ${
+          isDark ? "border-gray-800" : "border-gray-100"
+        }`}
+      >
+        <div className="flex items-center space-x-3">
+          <div
+            className={`w-10 h-10 rounded-lg flex items-center justify-center ${
+              isDark
+                ? "bg-linear-to-br from-blue-600 to-indigo-700"
+                : "bg-linear-to-br from-blue-500 to-indigo-600"
+            }`}
+          >
+            <span className="text-white font-bold text-lg">A</span>
+          </div>
+          <div>
+            <h1 className="text-xl font-bold">qbin</h1>
+            <p
+              className={`text-xs ${
+                isDark ? "text-gray-400" : "text-gray-500"
+              }`}
+            >
+              Admin Panel
+            </p>
+          </div>
+        </div>
+      </div>
+
+      {/* Навигация */}
+      <nav className="flex-1 p-4 overflow-y-auto">
+        <div className="mb-6">
+          <h3
+            className={`text-xs font-semibold uppercase tracking-wider mb-3 px-3 ${
+              isDark ? "text-gray-400" : "text-gray-500"
+            }`}
+          >
+            Main Menu
+          </h3>
+          <ul className="space-y-1">
+            {menuItems.map((item) => {
+              const isActive = location.pathname === item.path;
+
+              return (
+                <li key={item.path}>
+                  <Link
+                    to={item.path}
+                    className={`flex items-center space-x-3 px-3 py-3 rounded-lg transition-all duration-200 ease-in-out ${
+                      isActive
+                        ? isDark
+                          ? "bg-blue-900/30 text-blue-300 border-l-4 border-blue-400"
+                          : "bg-blue-50 text-blue-600 border-l-4 border-blue-500"
+                        : isDark
+                        ? "text-gray-300 hover:bg-gray-800 hover:text-white"
+                        : "text-gray-700 hover:bg-gray-50 hover:text-gray-900"
+                    }`}
+                  >
+                    <span
+                      className={
+                        isActive
+                          ? isDark
+                            ? "text-blue-400"
+                            : "text-blue-600"
+                          : isDark
+                          ? "text-gray-500"
+                          : "text-gray-400"
+                      }
+                    >
+                      {item.icon}
+                    </span>
+                    <span className="font-medium">{item.label}</span>
+                  </Link>
+                </li>
+              );
+            })}
+          </ul>
+        </div>
+
+        {/* Дополнительный раздел */}
+        <div className="mb-6">
+          <h3
+            className={`text-xs font-semibold uppercase tracking-wider mb-3 px-3 ${
+              isDark ? "text-gray-400" : "text-gray-500"
+            }`}
+          >
+            System
+          </h3>
+          <ul className="space-y-1">
+            <li>
+              <a
+                href="#help"
+                className={`flex items-center space-x-3 px-3 py-3 rounded-lg transition-colors ${
+                  isDark
+                    ? "text-gray-300 hover:bg-gray-800 hover:text-white"
+                    : "text-gray-700 hover:bg-gray-50 hover:text-gray-900"
+                }`}
+              >
+                <svg
+                  className={`w-5 h-5 ${
+                    isDark ? "text-gray-500" : "text-gray-400"
+                  }`}
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                  />
+                </svg>
+                <span className="font-medium">Help & Support</span>
+              </a>
+            </li>
+            <li>
+              <a
+                href="#docs"
+                className={`flex items-center space-x-3 px-3 py-3 rounded-lg transition-colors ${
+                  isDark
+                    ? "text-gray-300 hover:bg-gray-800 hover:text-white"
+                    : "text-gray-700 hover:bg-gray-50 hover:text-gray-900"
+                }`}
+              >
+                <svg
+                  className={`w-5 h-5 ${
+                    isDark ? "text-gray-500" : "text-gray-400"
+                  }`}
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                  />
+                </svg>
+                <span className="font-medium">Documentation</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+      {/* Футер сайдбара с профилем */}
+      <div
+        className={`p-4 border-t ${
+          isDark
+            ? "border-gray-800 bg-gray-900/50"
+            : "border-gray-100 bg-gray-50"
+        }`}
+      >
+        <div className="flex items-center space-x-3">
+          <div className="relative">
+            <div
+              className={`w-10 h-10 rounded-full flex items-center justify-center text-white font-semibold ${
+                isDark
+                  ? "bg-linear-to-br from-purple-600 to-pink-600"
+                  : "bg-linear-to-br from-purple-500 to-pink-500"
+              }`}
+            >
+              Q
+            </div>
+            <div className="absolute bottom-0 right-0 w-3 h-3 bg-green-500 border-2 border-white rounded-full"></div>
+          </div>
+          <div className="flex-1 min-w-0">
+            <p
+              className={`text-sm font-semibold truncate ${
+                isDark ? "text-white" : "text-gray-900"
+              }`}
+            >
+              que
+            </p>
+            <p
+              className={`text-xs truncate ${
+                isDark ? "text-gray-400" : "text-gray-500"
+              }`}
+            >
+              Administrator
+            </p>
+          </div>
+          <button
+            className={`p-2 rounded-lg transition-colors ${
+              isDark
+                ? "text-gray-400 hover:text-gray-300 hover:bg-gray-800"
+                : "text-gray-400 hover:text-gray-600 hover:bg-gray-200"
+            }`}
+            aria-label="More options"
+          >
+            <svg
+              className="w-5 h-5"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"
+              />
+            </svg>
+          </button>
+
+          {/* Кнопка смены темы */}
+          <button
+            onClick={toggleTheme}
+            className={`p-2 rounded-lg transition-colors ${
+              isDark
+                ? "text-yellow-400 hover:text-yellow-300 hover:bg-gray-800"
+                : "text-gray-600 hover:text-blue-600 hover:bg-gray-100"
+            }`}
+            aria-label={
+              isDark ? "Switch to light theme" : "Switch to dark theme"
+            }
+          >
+            {isDark ? (
+              <svg
+                className="w-5 h-5"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"
+                />
+              </svg>
+            ) : (
+              <svg
+                className="w-5 h-5"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"
+                />
+              </svg>
+            )}
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default LeftSidebar;
